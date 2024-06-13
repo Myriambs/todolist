@@ -1,18 +1,15 @@
 import React from 'react'
 
-const TodoElement = ({todo,fesekh}) => {
+const TodoElement = ({todo,fesekh,checkelement}) => {
     console.log('todo=>',todo)
-   
   return (
     <div>
-      <li>
-
+    <li>
 {todo.text}
-
         <button  onClick={()=>fesekh(todo.id)}   >remove</button>
         <button>update</button>
-        <button>check</button>
-      </li>
+        <button  onClick={()=>checkelement(todo.id)} >     { todo.done ? "te9dhat" : "mezel" }       </button>
+    </li>
       
     </div>
   )

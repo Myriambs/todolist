@@ -4,7 +4,6 @@ import './App.css'
 import AddTodo from './Components/AddTodo'
 import TodoList from './Components/TodoList'
 const App = () => {
-
 const [todo,setTodo]=useState(
     [
     {text:"gazouz",id:1,done:false},
@@ -20,9 +19,20 @@ const [todo,setTodo]=useState(
 )
 const fesekh=(id)=>{
 setTodo( todo.filter((el)=> el.id !== id)
-
 )
 }
+
+const checkelement=(idtodo)=>{
+  setTodo(
+    todo.map((el)=> el.id === idtodo ? { ...el,done: !el.done} : el )
+  )
+}
+
+const add=(newtodo)=>{
+setTodo( [...todo,newtodo])
+}
+
+
 
   return (
     <div>
@@ -32,9 +42,9 @@ setTodo( todo.filter((el)=> el.id !== id)
   </header>
   <div className="container">
     {/* container mte3 el input ely heya tajouti fil data  */}
-   <AddTodo/>
+   <AddTodo  add={add}   />
    {/* affichage ely b3ed feha les 3 button mte3 kol element  */}
-   <TodoList     todo={todo}  fesekh={fesekh}  />
+   <TodoList     todo={todo}  fesekh={fesekh}  checkelement={checkelement}   />
   
   </div>
 </>
